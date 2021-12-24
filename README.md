@@ -1,5 +1,7 @@
 # Test default secret management
 
+[![Dynamic Secret Names](https://github.com/tbobm/gh-test-secret-management/actions/workflows/main.yaml/badge.svg)](https://github.com/tbobm/gh-test-secret-management/actions/workflows/main.yaml) [![Env-based dynamic names](https://github.com/tbobm/gh-test-secret-management/actions/workflows/synthetic.yaml/badge.svg)](https://github.com/tbobm/gh-test-secret-management/actions/workflows/synthetic.yaml)
+
 **Goal:** Allow to use a specific secret if it exists and fallback to a default one otherwise.
 
 Implementation based on [this StackOverflow answer][so-answer]
