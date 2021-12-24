@@ -1,0 +1,23 @@
+---
+name: Env-based dynamic names
+
+on:
+  push:
+
+jobs:
+  synthetic:
+    name: Create and consume
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Inject slug/short variables
+        uses: rlespinasse/github-slug-action@v3.x
+      - name: Prepare custom Outputs
+        id: prepare-env
+        run: |
+          echo "DEPLOY_TARGET_NAME=$([ $GITHUB_REF_SLUG == main ] && echo DEPLOY_TARGET || echo ${GITHUB_REF_SLUG}_DEPLOY_TARGET)" >> $GITHUB_ENV
+      - name: Test Application
+        env:
+          # Inject secret values to environment variables
+          DEPLOY_TARGET: ${{ secrets[env.DEPLOY_TARGET_NAME] }}
+        run: |
+          printenv | grep DEPLOY_
