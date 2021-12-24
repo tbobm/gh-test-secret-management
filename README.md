@@ -4,5 +4,5 @@
 
 ## Example
 
-- Secret `main_DEPLOY_TARGET` equals `main-server`
+- Secret `DEPLOY_TARGET` equals `main-server`
 - Secret `staging_DEPLOY_TARGET` equals `staging-server`
