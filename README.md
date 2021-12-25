@@ -1,10 +1,10 @@
-# Test default secret management
+# Github Actions """Environment""" Secrets
 
 [![Dynamic Secret Names](https://github.com/tbobm/gh-test-secret-management/actions/workflows/main.yaml/badge.svg)](https://github.com/tbobm/gh-test-secret-management/actions/workflows/main.yaml) [![Env-based dynamic names](https://github.com/tbobm/gh-test-secret-management/actions/workflows/synthetic.yaml/badge.svg)](https://github.com/tbobm/gh-test-secret-management/actions/workflows/synthetic.yaml)
 
 **Goal:** Allow to use a specific secret if it exists and fallback to a default one otherwise.
 
-Implementation based on [this StackOverflow answer][so-answer]
+Implementation based on [this StackOverflow answer][so-answer].
 
 [so-answer]: https://stackoverflow.com/questions/61255989/dynamically-retrieve-github-actions-secret/61272209#61272209
 
@@ -17,6 +17,13 @@ We have two secrets: one for the "production" environment and another one for th
 
 When interacting (`push`) with the `main` branch, we want to use the `DEPLOY_TARGET` Secret.
 When interacting (`push`) with the `staging` branch, we want to use the `staging_DEPLOY_TARGET` Secret.
+
+Note: in this context, we take in account that [Github Actions Environments][gh-envs] are not enabled
+for the concerned repository. This is mostly a custom implementation to mimic some features
+exposed using [Environment Secrets][gh-env-secrets].
+
+[gh-env-secrets]: https://docs.github.com/en/actions/deployment/targeting-different-environments/using-environments-for-deployment#environment-secrets
+[gh-envs]: https://docs.github.com/en/actions/deployment/targeting-different-environments/using-environments-for-deployment#about-environments
 
 ## Implementation A
 
